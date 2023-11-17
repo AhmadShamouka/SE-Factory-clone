@@ -48,3 +48,21 @@ const leftDiv=document.getElementById('overlay')
           overlayDiv.style.display = (overlayDiv.style.display === 'none' || overlayDiv.style.display === '') ? 'flex' : 'none';
         });
       });
+
+      for (let i = 1; i <= 4; i++) {
+        const tab = document.getElementById(`btntab${i}`);
+        tab.addEventListener('click', function () {
+            openTab(`tab${i}`);
+        });
+    }
+
+    function openTab(tabName) {
+        // Hide all tab contents
+        var tabContents = document.querySelectorAll('.w-tab-pane');
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove('w--tab-active');
+        }
+
+        // Show the selected tab content
+        document.getElementById(tabName).classList.add('w--tab-active');
+    }
