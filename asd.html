@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            display: none;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-left {
+            padding: 20px;
+        }
+
+        .card-right {
+            flex: 1;
+        }
+
+        .text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            /* Add additional styles for your logo */
+        }
+
+        .image-right {
+            width: 100%;
+            height: auto;
+            /* Add additional styles for your image */
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cards-container">
+    <div id="card1" class="card">
+      gfvikuyg  <!-- Your card content goes here -->
+    </div>
+
+    <div id="card2" class="card">
+      ;ohi  <!-- Your card content goes here -->
+    </div>
+
+    <div id="card3" class="card">
+       o;h <!-- Your card content goes here -->
+    </div>
+
+    <div id="card4" class="card">
+     .kb   <!-- Your card content goes here -->
+    </div>
+
+    <!-- Dots for navigation -->
+    <div class="dots-container">
+        <a href="#" class="dot" onclick="currentSlide(1)"></a>
+        <a href="#" class="dot" onclick="currentSlide(2)"></a>
+        <a href="#" class="dot" onclick="currentSlide(3)"></a>
+        <a href="#" class="dot" onclick="currentSlide(4)"></a>
+    </div>
+</div>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+        showCard(n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("card");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "flex";  
+        dots[slideIndex-1].className += " active";
+    }
+
+    // JavaScript for handling card visibility
+    function showCard(cardNumber) {
+        // Hide all cards
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById('card' + i).style.display = 'none';
+        }
+
+        // Show the selected card
+        document.getElementById('card' + cardNumber).style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>

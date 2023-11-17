@@ -26,7 +26,7 @@ const leftDiv=document.getElementById('overlay')
         if (charIndex <= currentString.length) {
           setTimeout(typeText, 100);
         } else {
-          // Move to the next string after a brief delay
+     
           setTimeout(function() {
             charIndex = 0;
             stringIndex = (stringIndex + 1) % strings.length;
@@ -44,7 +44,7 @@ const leftDiv=document.getElementById('overlay')
         var overlayDiv = document.getElementById('overlayDiv');
       
         toggleButton.addEventListener('click', function () {
-          // Toggle the visibility of the overlay
+
           overlayDiv.style.display = (overlayDiv.style.display === 'none' || overlayDiv.style.display === '') ? 'flex' : 'none';
         });
       });
@@ -57,12 +57,57 @@ const leftDiv=document.getElementById('overlay')
     }
 
     function openTab(tabName) {
-        // Hide all tab contents
+
         var tabContents = document.querySelectorAll('.w-tab-pane');
         for (var i = 0; i < tabContents.length; i++) {
             tabContents[i].classList.remove('w--tab-active');
         }
 
-        // Show the selected tab content
+     
         document.getElementById(tabName).classList.add('w--tab-active');
     }
+
+
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+        showCard(n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("card");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "flex";  
+        dots[slideIndex-1].className += " active";
+    }
+
+  
+    function showCard(cardNumber) {
+     
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById('card' + i).style.display = 'none';
+        }
+
+      
+        document.getElementById('card' + cardNumber).style.display = 'flex';
+    }
+
+    
+    setInterval(function() {
+        plusSlides(1);
+    }, 3000);
